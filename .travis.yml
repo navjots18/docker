@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t navjots18/docker -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true navjots18/docker npm run test -- --coverage
